@@ -8,20 +8,70 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+    private RelativeLayout mRelLay;
+    private float mInitialX, mInitialY;
+    private int mInitialLeft, mInitialTop;
+    private View mMovingView = null;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mRelLay = (RelativeLayout) findViewById(R.id.relativeLayout);
+
+        for (int i = 0; i < 3; i++) {
+            mRelLay.getChildAt(i).setOnTouchListener(this);
+
+        }
+    }
+
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        RelativeLayout.LayoutParams mLayoutParams;
+
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mMovingView = view;
+                mLayoutParams = (RelativeLayout.LayoutParams) mMovingView.getLayoutParams();
+                mInitialX = motionEvent.getRawX();
+                mInitialY = motionEvent.getRawY();
+                mInitialLeft = mLayoutParams.leftMargin;
+                mInitialTop = mLayoutParams.topMargin;
+
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+                if (mMovingView != null) {
+                    mLayoutParams = (RelativeLayout.LayoutParams) mMovingView.getLayoutParams();
+                    mLayoutParams.leftMargin = (int) (mInitialLeft + motionEvent.getRawX() - mInitialX);
+                    mLayoutParams.topMargin = (int) (mInitialTop + motionEvent.getRawY() - mInitialY);
+                    mMovingView.setLayoutParams(mLayoutParams);
+                }
+
+
+                break;
+
+            case MotionEvent.ACTION_UP:
+                mMovingView = null;
+                break;
+        }
+
+        return true;
+    }
+}
+    /*
     private boolean isTouch = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -72,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         return Math.round(px);
     }
 }
-
+*/
     /*
     private void touchStart(float x, float y) {
         myPath = new Path();
