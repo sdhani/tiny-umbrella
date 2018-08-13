@@ -15,16 +15,14 @@ import java.util.ArrayList;
 
 public class SquareAdapter extends ArrayAdapter<Square>{
     private static final String LOG_TAG = SquareAdapter.class.getSimpleName();
-    private int mColorResourceId;
 
     // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
     // the second argument is used when the ArrayAdapter is populating a single TextView.
     // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
     // going to use this second argument, so it can be any value. Here, we used 0.
 
-    public SquareAdapter(Activity context, ArrayList<Square> board, int colorResourceId){
+    public SquareAdapter(Activity context, ArrayList<Square> board){
         super(context, 0, board);
-        mColorResourceId = colorResourceId;
     }
 
     /**

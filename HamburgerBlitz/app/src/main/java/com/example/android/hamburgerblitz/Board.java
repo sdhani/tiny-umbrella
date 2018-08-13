@@ -1,10 +1,8 @@
 package com.example.android.hamburgerblitz;
 
-import android.util.Log;
-
 import java.util.Random;
 
-public class Board {
+public class Board{
     private int row = 3;
     private int col = 6;
     private int board[][] = new int[row][col];
@@ -24,4 +22,5 @@ public class Board {
     public int[][] getBoard(){
         return board;
     }
+
 }
