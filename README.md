@@ -1,5 +1,5 @@
 ## TinyUmbrella
-### A collection of Mini Projects focused on building App features [Android Studio App Development]
+*A collection of Mini Projects focused on building App features [Android Studio App Development]*
 #### GoldMinerSpinOff 
   * Builds parts of the original GoldMinerVegas Computer Game such as a 180 degress spinning arrow, and a count down clock. Further improvements to this mini game will include an animation that mimics the lanuching of the arrow as well as the addition of 'gold' to collect as points.
 
