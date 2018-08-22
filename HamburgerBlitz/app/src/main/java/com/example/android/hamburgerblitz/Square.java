@@ -5,15 +5,18 @@ public class Square {
     private int mSquareValue;
     private int mImageId = NO_IMAGE_PROVIDED;
     private int mColorId;
+    private String mColorName;
 
 //    public Square(int squareValue, int imageId) {
 //        mSquareValue = squareValue;
 //        mImageId = imageId;
 //    }
 
-    public Square(int squareValue, int colorId) {
+    public Square(int squareValue, int colorId, String colorName) {
         mSquareValue = squareValue;
         mColorId = colorId;
+        mColorName = colorName;
+
     }
 
     public int getSquareValue() {
@@ -22,6 +25,10 @@ public class Square {
 
     public int getColorId() {
         return mColorId;
+    }
+
+    public String getColorName() {
+        return mColorName;
     }
 
     public int getImageId() {

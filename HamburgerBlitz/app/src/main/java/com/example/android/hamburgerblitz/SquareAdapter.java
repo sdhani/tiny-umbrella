@@ -3,13 +3,11 @@ package com.example.android.hamburgerblitz;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -40,12 +38,16 @@ public class SquareAdapter extends ArrayAdapter<Square>{
         if(gridItemView == null){
             //creates a new list item view layout
             gridItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.board_grid,parent, false);
+                    R.layout.button_layout,parent, false);
         }
 
         Square currentSquare = getItem(position);
 
-        ImageView image = (ImageView) gridItemView.findViewById(R.id.image_view);
+        Button block = (Button) gridItemView.findViewById(R.id.button_view);
+        block.setText(currentSquare.getColorName());
+        block.setBackgroundColor(currentSquare.getColorId());
+
+       /* ImageView image = (ImageView) gridItemView.findViewById(R.id.image_view);
         if(currentSquare.hasImage()){
             //Set image to the image resource specified in the current word
             image.setImageResource(currentSquare.getImageId());
@@ -54,6 +56,7 @@ public class SquareAdapter extends ArrayAdapter<Square>{
             //if no image is specified set to Gone (8)
             image.setVisibility(View.GONE);
         }
+        */
 
         return gridItemView;
     }

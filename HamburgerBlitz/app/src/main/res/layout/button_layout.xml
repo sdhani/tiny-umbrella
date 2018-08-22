@@ -8,9 +8,13 @@
     <!--Tools: DesignTime Layout Attributes are attributes that will
         show on the layout preview, but not at runtime for the app-->
 
-    <ImageView
-        android:id="@+id/image_view"
-        android:layout_height="48dp"
-        android:layout_width="48dp"
-        android:src="@mipmap/ic_launcher" />
+    <Button
+        android:id="@+id/button_view"
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:textSize="18sp" />
+
+
 </LinearLayout>
